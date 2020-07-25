@@ -106,7 +106,8 @@ public class CalculatorServices {
         return 0;
     }
     private List<String> toList(String equation) {
-        Pattern pattern = Pattern.compile("((\\d*\\.\\d+)|(\\d+)|([\\+\\-\\*/\\(\\)]))");
+
+        Pattern pattern = Pattern.compile("((\\-\\d*\\.\\d+)|(\\-\\d+)|(\\d*\\.\\d+)|(\\d+)|([\\+\\-\\*/\\(\\)]))");
 //        Pattern pattern = Pattern.compile("[-+*%/]|[0-9]+");
         Matcher matcher = pattern.matcher(equation);
         List<String> listOfOperator = new ArrayList<>();

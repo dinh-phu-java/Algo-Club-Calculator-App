@@ -14,7 +14,7 @@ public class CalculatorController {
     private CalculatorServices calculatorServices;
 
     @GetMapping("/calculate")
-    public String calculator(@RequestParam String operation){
+    public String calculator(@RequestBody String operation){
         return calculatorServices.calculatePostfix(calculatorServices.toPostfix(operation));
     }
 
