@@ -14,11 +14,7 @@ public class CalculatorController {
     private CalculatorServices calculatorServices;
 
     @GetMapping("/calculate")
-    public float calculator(@RequestParam String operation){
-        List<String> operatorList=  calculatorServices.convertStringToList(operation);
-        List<String> postFixList=calculatorServices.toPostFixWithBrace(operatorList);
-        float result=calculatorServices.postFixToResult(postFixList);
-        return result;
+    public String calculator(@RequestParam String operation){
+        return calculatorServices.calculatePostfix(calculatorServices.toPostfix(operation));
     }
-
 }
