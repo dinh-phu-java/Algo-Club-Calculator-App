@@ -50,7 +50,7 @@ public class CalculatorServices {
         return matcher.matches();
     }
 
-    public   boolean isGreaterOperation(String str1,String str2){
+    public  boolean isGreaterOperation(String str1,String str2){
         String patternGreaterStr="^(\\*)|(/)+$";
         String patternLowerStr="^(\\+)|(-)+$";
         Pattern pattern=Pattern.compile(patternGreaterStr);
@@ -75,14 +75,14 @@ public class CalculatorServices {
 //        return false;
     }
 
-    public   boolean isOperation(String str){
+    public  boolean isOperation(String str){
         String patternStr="^(\\*)|(\\+)|(-)|(/)$";
         Pattern pattern=Pattern.compile(patternStr);
         Matcher matcher=pattern.matcher(str);
         return matcher.matches();
     }
 
-    public  boolean isOpenBrace(String str){
+    public boolean isOpenBrace(String str){
         String patternStr="^[(]$";
         Pattern pattern=Pattern.compile(patternStr);
         Matcher matcher=pattern.matcher(str);
@@ -90,14 +90,14 @@ public class CalculatorServices {
     }
 
 
-    public  boolean isCloseBrace(String str){
+    public boolean isCloseBrace(String str){
         String patternStr="^[)]$";
         Pattern pattern=Pattern.compile(patternStr);
         Matcher matcher=pattern.matcher(str);
         return matcher.matches();
     }
 
-    public  float calculate(float num1,float num2,String operation){
+    public float calculate(float num1,float num2,String operation){
         float total=0;
         switch(operation){
             case "-":
@@ -116,7 +116,7 @@ public class CalculatorServices {
         return total;
     }
 
-    public  float postFixToResult(List<String> list){
+    public float postFixToResult(List<String> list){
 
         Stack<Float> tempStack=new Stack<>();
 
@@ -132,7 +132,7 @@ public class CalculatorServices {
         return tempStack.pop();
     }
 
-    public  List<String> convertStringToList(String input){
+    public List<String> convertStringToList(String input){
         List<String> list= new ArrayList<>();
 
         int count=0;
@@ -160,7 +160,7 @@ public class CalculatorServices {
         return list;
     }
 
-    public  int countOperationInput(String input){
+    public int countOperationInput(String input){
         int count=0;
         for (int i=0;i<input.length();i++){
             if (isOperation( String.valueOf(input.charAt(i)))){
@@ -172,7 +172,7 @@ public class CalculatorServices {
     }
 
 
-    public  List<String> toPostFixWithBrace(List<String> input){
+    public List<String> toPostFixWithBrace(List<String> input){
         ArrayList<String> postFix=new ArrayList<>();
         Stack<String> operationStack=new Stack<>();
 

@@ -15,10 +15,13 @@ public class CalculatorController {
 
     @GetMapping("/calculate")
     public float calculator(@RequestParam String operation){
-        List<String> operatorList=  calculatorServices.convertStringToList(operation);
-        List<String> postFixList=calculatorServices.toPostFixWithBrace(operatorList);
-        float result=calculatorServices.postFixToResult(postFixList);
-        return result;
+        String tesMyString="8+2";
+        float a=calculatorServices.postFixToResult(calculatorServices.toPostFixWithBrace(calculatorServices.convertStringToList(operation)));
+
+//        List<String> operatorList=  calculatorServices.convertStringToList(operation);
+//        List<String> postFixList=calculatorServices.toPostFixWithBrace(operatorList);
+//        float result=calculatorServices.postFixToResult(postFixList);
+        return a;
     }
 
 }
