@@ -17,4 +17,5 @@ public class CalculatorController {
     public String calculator(@RequestParam String operation){
         return calculatorServices.calculatePostfix(calculatorServices.toPostfix(operation));
     }
+
 }
