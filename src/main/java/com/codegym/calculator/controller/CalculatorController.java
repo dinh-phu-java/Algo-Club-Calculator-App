@@ -1,5 +1,6 @@
 package com.codegym.calculator.controller;
 
+import com.codegym.calculator.model.LinearEquationResult;
 import com.codegym.calculator.services.CalculatorServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,13 @@ public class CalculatorController {
     private CalculatorServices calculatorServices;
 
     @GetMapping("/calculate")
-    public String calculator(@RequestParam String operation){
+    public String calculator(@RequestBody String operation){
         return calculatorServices.calculatePostfix(calculatorServices.toPostfix(operation));
     }
+
+    @GetMapping("/linear")
+    public LinearEquationResult linearEquationResult(@RequestParam float a,@RequestParam float b) {
+        return calculatorServices.solveLinearEquation(a,b);
+    }
+
 }

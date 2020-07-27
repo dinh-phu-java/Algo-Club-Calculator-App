@@ -1,5 +1,6 @@
 package com.codegym.calculator.services;
 
+import com.codegym.calculator.model.LinearEquationResult;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
@@ -11,6 +12,35 @@ import java.util.regex.Pattern;
 
 @Service
 public class CalculatorServices {
+    public LinearEquationResult solveLinearEquation(float a, float b) {
+        LinearEquationResult linearEquationResult = new LinearEquationResult();
+        if (a == 0) {
+           if (b == 0) {
+               linearEquationResult.setMessage("Multiple roots");
+
+           } else {
+               linearEquationResult.setMessage("No roots");
+           }
+        }
+        else {
+            float decimalRoot = -b/a;
+            String fractionRoot = convertToFractionRoot(-b,a);
+            linearEquationResult.setDecimalRoot(decimalRoot);
+            linearEquationResult.setFractionRoot(fractionRoot);
+        }
+        return linearEquationResult;
+    }
+    private float greatestCommonDivisor(float a, float b)
+    {
+      return 1;
+    }
+    private String convertToFractionRoot(float a, float b) {
+        float greatestCommonDivisor = greatestCommonDivisor(Math.abs(a),Math.abs(b));
+        float numerator = a/greatestCommonDivisor;
+        float denominator = b/greatestCommonDivisor;
+        return numerator + "/" + denominator;
+    }
+
     public String calculatePostfix(List<String> postfix) {
         Stack<String> numberStack = new Stack<>();
         int result = 0;
@@ -107,7 +137,8 @@ public class CalculatorServices {
         //add a comment
     }
     private List<String> toList(String equation) {
-        Pattern pattern = Pattern.compile("((\\d*\\.\\d+)|(\\d+)|([\\+\\-\\*/\\(\\)]))");
+
+        Pattern pattern = Pattern.compile("((\\-\\d*\\.\\d+)|(\\-\\d+)|(\\d*\\.\\d+)|(\\d+)|([\\+\\-\\*/\\(\\)]))");
 //        Pattern pattern = Pattern.compile("[-+*%/]|[0-9]+");
         Matcher matcher = pattern.matcher(equation);
         List<String> listOfOperator = new ArrayList<>();
