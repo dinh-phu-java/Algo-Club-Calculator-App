@@ -104,6 +104,7 @@ public class CalculatorServices {
             return 1;
         }
         return 0;
+        //add a comment
     }
     private List<String> toList(String equation) {
         Pattern pattern = Pattern.compile("((\\d*\\.\\d+)|(\\d+)|([\\+\\-\\*/\\(\\)]))");
